@@ -92,7 +92,7 @@ Build/Android/res/*/*
 # Ignore plugins binaries on deep subfolders
 Plugins/**/Binaries/*
 Plugins/**/Intermediate/*
-Content/
+
 
 ### Windows ###
 # Windows thumbnail cache files
