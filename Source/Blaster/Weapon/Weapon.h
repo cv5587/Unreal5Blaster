@@ -24,6 +24,7 @@ class BLASTER_API AWeapon : public AActor
 public:	
 	AWeapon();
 	virtual void Tick(float DeltaTime) override;
+	void ShowPickupWidget(bool bShowWidget);
 
 protected:
 	virtual void BeginPlay() override;
@@ -38,6 +39,15 @@ protected:
 		const FHitResult& SweepResult
 	);
 
+	UFUNCTION()
+	virtual void OnSphereEndOverlap(
+		UPrimitiveComponent* OverlappedComponent,
+		AActor* OtherActor,
+		UPrimitiveComponent* OtherComp,
+		int32 OtherBodyIndex
+	);
+
+
 private:
 	UPROPERTY(VisibleAnywhere, Category = "Weapon Properties")
 	USkeletalMeshComponent* WeaponMesh;	
@@ -50,7 +60,7 @@ private:
 
 	UPROPERTY(VisibleAnywhere, Category = "Weapon Properties")
 	class UWidgetComponent* PickupWidget;
-public:	
 
-
+public:
+	FORCEINLINE void SetWeaponState(EWeaponState State) { WeaponState = State; }
 };
